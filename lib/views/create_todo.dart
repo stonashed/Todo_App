@@ -30,7 +30,9 @@ class _ClassTodoViewState extends State<ClassTodoView> {
                     floatingLabelBehavior: FloatingLabelBehavior.never,
                     focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(color: customBlue),
-                    ))),
+                    )
+                    )
+                    ),
             SizedBox(
               height: 15,
             ),
@@ -106,6 +108,8 @@ class _ClassTodoViewState extends State<ClassTodoView> {
                 backgroundColor: customBlue,
               ),
             )
+
+            
           ],
         ),
       ),
