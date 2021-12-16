@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/models/todo.dart';
+import 'package:todo_app/utiles.dart';
 
 class TodoTileView extends StatelessWidget {
   const TodoTileView({
     Key? key,
+    required this.todo,
   }) : super(key: key);
+  final Datum todo;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +18,7 @@ class TodoTileView extends StatelessWidget {
           child: Row(children: [
             Icon(
               Icons.check_circle_outline,
-              color: Colors.pink,
+              color: dateColor(todo.dateTime),
             ),
             const SizedBox(
               width: 10,
@@ -25,7 +29,7 @@ class TodoTileView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Plan a trip to Germany',
+                      todo.title,
                       style: TextStyle(
                           fontWeight: FontWeight.w600,
                           color: Color.fromRGBO(37, 43, 103, 1)),
@@ -34,7 +38,7 @@ class TodoTileView extends StatelessWidget {
                       height: 5,
                     ),
                     Text(
-                      'this is my first trip to germany on a plane, if it is your first time please come to the back',
+                      todo.description,
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(color: Colors.grey, fontSize: 10),
@@ -48,9 +52,10 @@ class TodoTileView extends StatelessWidget {
               children: [
                 Icon(
                   Icons.notifications,
-                  color: Colors.pink,
+                  color: dateColor(todo.dateTime),
                 ),
-                Text('Yesterday', style: TextStyle(color: Colors.pink)),
+                Text(todo.dateTime,
+                    style: TextStyle(color: dateColor(todo.dateTime))),
               ],
             )
           ])),
