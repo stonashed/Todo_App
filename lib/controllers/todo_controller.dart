@@ -57,4 +57,23 @@ class TodoController {
     });
     return isDeleted = false;
   }
+
+  Future<bool> updateTodo({required bool status, required String id}) async {
+    bool isUpdated = false;
+    await _todoServices
+        .updateTodoRequest(status: status, id: id)
+        .then((response) {
+      int statusCode = response.statusCode;
+      if (statusCode == 201) {
+        //success
+        isUpdated = true;
+      } else {
+        // faillure
+        isUpdated = false;
+      }
+    }).catchError((onError) {
+      isUpdated = false;
+    });
+    return isUpdated;
+  }
 }
